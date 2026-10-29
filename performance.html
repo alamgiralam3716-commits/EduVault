@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance - EduVault</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <div>
+                <h2>Edu<span>Vault</span></h2>
+                
+            </div>
+        </div>
+
+        <nav>
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="students.html">👨‍🎓 Students</a>
+            <a href="attendance.html">📅 Attendance</a>
+            <a href="performance.html" class="active">📊 Performance</a>
+            <a href="fees.html">💰 Fees</a>
+            <a href="routine.html">🕐 Class Routine</a>
+            <a href="reports.html">📄 Reports</a>
+            <a href="settings.html">⚙️ Settings</a>
+        </nav>
+
+        <button onclick="logout()" class="logout">
+            ↪ Logout
+        </button>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="main-content performance-page">
+
+        <div class="top-bar">
+            <div>
+                <h1>Academic Performance</h1>
+                <p>Manage student marks and results</p>
+            </div>
+
+            <button class="primary-btn" onclick="savePerformance()">
+                💾 Save Result
+            </button>
+        </div>
+
+
+        <!-- Student Selection -->
+
+        <div class="performance-controls">
+
+            <div class="input-group">
+                <label>Select Student</label>
+
+                <select id="studentSelect" onchange="calculateResult()">
+                    <option value="">Select Student</option>
+                    <option value="Rahul Sharma">Rahul Sharma - 101</option>
+                    <option value="Priya Singh">Priya Singh - 102</option>
+                    <option value="Aman Verma">Aman Verma - 103</option>
+                    <option value="Anjali Patel">Anjali Patel - 104</option>
+                    <option value="Rohit Kumar">Rohit Kumar - 105</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Class</label>
+
+                <select id="performanceClass">
+                    <option>10-A</option>
+                    <option>10-B</option>
+                    <option>9-A</option>
+                    <option>9-B</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Exam</label>
+
+                <select id="examType">
+                    <option>Unit Test 1</option>
+                    <option>Half Yearly</option>
+                    <option>Unit Test 2</option>
+                    <option>Annual Exam</option>
+                </select>
+            </div>
+
+        </div>
+
+
+        <!-- Marks Table -->
+
+        <div class="table-container">
+
+            <h2 class="section-title">Subject Marks</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Maximum Marks</th>
+                        <th>Obtained Marks</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>100</td>
+                        <td>
+                            <input
+                                type="number"
+                                class="marks-input"
+                                min="0"
+                                max="100"
+                                value="0"
+                                oninput="calculateResult()">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Science</td>
+                        <td>100</td>
+                        <td>
+                            <input
+                                type="number"
+                                class="marks-input"
+                                min="0"
+                                max="100"
+                                value="0"
+                                oninput="calculateResult()">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>English</td>
+                        <td>100</td>
+                        <td>
+                            <input
+                                type="number"
+                                class="marks-input"
+                                min="0"
+                                max="100"
+                                value="0"
+                                oninput="calculateResult()">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Hindi</td>
+                        <td>100</td>
+                        <td>
+                            <input
+                                type="number"
+                                class="marks-input"
+                                min="0"
+                                max="100"
+                                value="0"
+                                oninput="calculateResult()">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Social Science</td>
+                        <td>100</td>
+                        <td>
+                            <input
+                                type="number"
+                                class="marks-input"
+                                min="0"
+                                max="100"
+                                value="0"
+                                oninput="calculateResult()">
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- Result Summary -->
+
+        <div class="result-summary">
+
+            <div class="result-card">
+                <span>Total Marks</span>
+                <strong id="totalMarks">0 / 500</strong>
+            </div>
+
+            <div class="result-card">
+                <span>Percentage</span>
+                <strong id="percentage">0%</strong>
+            </div>
+
+            <div class="result-card">
+                <span>Grade</span>
+                <strong id="grade">-</strong>
+            </div>
+
+            <div class="result-card">
+                <span>Result</span>
+                <strong id="resultStatus">-</strong>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

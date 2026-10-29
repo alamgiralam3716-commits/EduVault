@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduVault - Class Routine</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>Edu<span>Vault</span></h2>
+            
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                🏠 Dashboard
+            </a>
+
+            <a href="students.html">
+                👨‍🎓 Student Records
+            </a>
+
+            <a href="attendance.html">
+                📅 Attendance
+            </a>
+
+            <a href="performance.html">
+                📊 Performance
+            </a>
+
+            <a href="fees.html">
+                💰 Fees
+            </a>
+
+            <a href="routine.html" class="active">
+                🕐 Class Routine
+            </a>
+
+            <a href="reports.html">📄 Reports</a>
+
+            <a href="settings.html">⚙️ Settings</a>
+
+        </nav>
+
+        <button onclick="logout()" class="logout">
+            ↪ Logout
+        </button>
+
+    </aside>
+
+
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
+
+    <main class="main-content routine-page">
+
+        <div class="page-header">
+
+            <div>
+                <h1>Class Routine</h1>
+                <p>Manage weekly class timetable</p>
+            </div>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- ROUTINE CONTROLS -->
+        <!-- ============================= -->
+
+        <div class="routine-controls">
+
+            <div class="routine-input-group">
+
+                <label>Select Class</label>
+
+                <select id="routineClass">
+                    <option value="">Select Class</option>
+                    <option value="Class 6">Class 6</option>
+                    <option value="Class 7">Class 7</option>
+                    <option value="Class 8">Class 8</option>
+                    <option value="Class 9">Class 9</option>
+                    <option value="Class 10">Class 10</option>
+                    <option value="Class 11">Class 11</option>
+                    <option value="Class 12">Class 12</option>
+                </select>
+
+            </div>
+
+
+            <div class="routine-input-group">
+
+                <label>Select Day</label>
+
+                <select id="routineDay">
+
+                    <option value="">Select Day</option>
+
+                    <option value="Monday">
+                        Monday
+                    </option>
+
+                    <option value="Tuesday">
+                        Tuesday
+                    </option>
+
+                    <option value="Wednesday">
+                        Wednesday
+                    </option>
+
+                    <option value="Thursday">
+                        Thursday
+                    </option>
+
+                    <option value="Friday">
+                        Friday
+                    </option>
+
+                    <option value="Saturday">
+                        Saturday
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="routine-input-group">
+
+                <label>Period</label>
+
+                <select id="routinePeriod">
+
+                    <option value="">Select Period</option>
+
+                    <option value="1st Period">
+                        1st Period
+                    </option>
+
+                    <option value="2nd Period">
+                        2nd Period
+                    </option>
+
+                    <option value="3rd Period">
+                        3rd Period
+                    </option>
+
+                    <option value="4th Period">
+                        4th Period
+                    </option>
+
+                    <option value="5th Period">
+                        5th Period
+                    </option>
+
+                    <option value="6th Period">
+                        6th Period
+                    </option>
+
+                    <option value="7th Period">
+                        7th Period
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="routine-input-group">
+
+                <label>Subject</label>
+
+                <input
+                    type="text"
+                    id="routineSubject"
+                    placeholder="e.g. Mathematics"
+                >
+
+            </div>
+
+
+            <div class="routine-input-group">
+
+                <label>Teacher</label>
+
+                <input
+                    type="text"
+                    id="routineTeacher"
+                    placeholder="Teacher name"
+                >
+
+            </div>
+
+
+            <div class="routine-input-group">
+
+                <label>Room</label>
+
+                <input
+                    type="text"
+                    id="routineRoom"
+                    placeholder="e.g. Room 101"
+                >
+
+            </div>
+
+
+            <div class="routine-input-group">
+
+                <label>Start Time</label>
+
+                <input
+                    type="time"
+                    id="routineStartTime"
+                >
+
+            </div>
+
+
+            <div class="routine-input-group">
+
+                <label>End Time</label>
+
+                <input
+                    type="time"
+                    id="routineEndTime"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-btn routine-add-btn"
+                onclick="addRoutine()"
+            >
+                + Add Routine
+            </button>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- TIMETABLE -->
+        <!-- ============================= -->
+
+        <div class="routine-table-card">
+
+            <div class="routine-table-header">
+
+                <div>
+                    <h2>Weekly Timetable</h2>
+                    <p>Class schedule</p>
+                </div>
+
+                <select
+                    id="filterRoutineClass"
+                    onchange="displayRoutine()"
+                >
+
+                    <option value="All">
+                        All Classes
+                    </option>
+
+                    <option value="Class 6">
+                        Class 6
+                    </option>
+
+                    <option value="Class 7">
+                        Class 7
+                    </option>
+
+                    <option value="Class 8">
+                        Class 8
+                    </option>
+
+                    <option value="Class 9">
+                        Class 9
+                    </option>
+
+                    <option value="Class 10">
+                        Class 10
+                    </option>
+
+                    <option value="Class 11">
+                        Class 11
+                    </option>
+
+                    <option value="Class 12">
+                        Class 12
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table class="routine-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Class</th>
+                            <th>Day</th>
+                            <th>Period</th>
+                            <th>Subject</th>
+                            <th>Teacher</th>
+                            <th>Room</th>
+                            <th>Time</th>
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="routineTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

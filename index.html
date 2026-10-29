@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVault - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+
+        <div class="login-left">
+            <h1>Edu<span>Vault</span></h1>
+
+            <h2>Next-Gen Student<br>Record Engine</h2>
+
+            <p>
+                Manage student records, attendance, academic
+                performance and fees in one secure place.
+            </p>
+
+            <div class="features">
+                <div>🔐 Secure Records</div>
+                <div>📊 Easy Management</div>
+                <div>⚡ Fast & Simple</div>
+            </div>
+        </div>
+
+
+        <div class="login-right">
+
+            <h2>Welcome Back 👋</h2>
+            <p>Login to your school account</p>
+
+            <form onsubmit="login(event)">
+
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="admin@school.com"
+                    required
+                >
+
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    required
+                >
+
+                <div class="remember">
+                    <label>
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit">
+                    Login →
+                </button>
+
+            </form>
+
+            <p id="loginMessage"></p>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

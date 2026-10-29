@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVault - Reports & Analytics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SIDEBAR: Keep the same structure as dashboard.html -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Edu<span>Vault</span></h2>
+            
+        </div>
+
+        <nav>
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="students.html">👨‍🎓 Student Records</a>
+            <a href="attendance.html">📅 Attendance</a>
+            <a href="performance.html">📊 Performance</a>
+            <a href="fees.html">💰 Fees</a>
+            <a href="routine.html">🕐 Class Routine</a>
+            <a href="reports.html" class="active">📄 Reports</a>
+            <a href="settings.html">⚙️ Settings</a>
+        </nav>
+
+        <button onclick="logout()" class="logout">
+            ↪ Logout
+        </button>
+
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content reports-page">
+
+        <div class="reports-header">
+            <div>
+                <h1>Reports & Analytics</h1>
+                <p>Monitor student records and school performance.</p>
+            </div>
+
+            <button class="report-btn" onclick="window.print()">
+                🖨️ Print Report
+            </button>
+        </div>
+
+        <!-- SUMMARY CARDS -->
+        <section class="report-stats">
+
+            <div class="report-stat-card">
+                <span>Total Students</span>
+                <h2 id="reportStudents">0</h2>
+                <p>Student records</p>
+            </div>
+
+            <div class="report-stat-card">
+                <span>Attendance Records</span>
+                <h2 id="reportAttendance">0</h2>
+                <p>Marked present or absent</p>
+            </div>
+
+            <div class="report-stat-card">
+                <span>Performance Records</span>
+                <h2 id="reportPerformance">0</h2>
+                <p>Saved examination results</p>
+            </div>
+
+            <div class="report-stat-card">
+                <span>Fee Records</span>
+                <h2 id="reportFees">0</h2>
+                <p>Saved fee entries</p>
+            </div>
+
+        </section>
+
+        <!-- REPORT FILTERS -->
+        <section class="report-panel">
+
+            <h2>Generate a Report</h2>
+
+            <div class="report-filters">
+
+                <div class="report-field">
+                    <label for="reportType">Report Type</label>
+                    <select id="reportType">
+                        <option value="students">Student Records</option>
+                        <option value="attendance">Attendance</option>
+                        <option value="performance">Academic Performance</option>
+                        <option value="fees">Fee Records</option>
+                    </select>
+                </div>
+
+                <div class="report-field">
+                    <label for="reportClass">Class</label>
+                    <select id="reportClass">
+                        <option value="all">All Classes</option>
+                        <option value="Class 6">Class 6</option>
+                        <option value="Class 7">Class 7</option>
+                        <option value="Class 8">Class 8</option>
+                        <option value="Class 9">Class 9</option>
+                        <option value="Class 10">Class 10</option>
+                        <option value="Class 11">Class 11</option>
+                        <option value="Class 12">Class 12</option>
+                    </select>
+                </div>
+
+                <button class="report-btn" onclick="generateReport()">
+                    Generate Report
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- REPORT TABLE -->
+        <section class="report-panel">
+
+            <div class="report-table-heading">
+                <div>
+                    <h2 id="reportTableTitle">Student Records</h2>
+                    <p id="reportDescription">Report results will appear here.</p>
+                </div>
+
+                <button class="report-btn secondary-report-btn"
+                        onclick="downloadReportCSV()">
+                    Download CSV
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table class="report-table">
+                    <thead id="reportTableHead"></thead>
+                    <tbody id="reportTableBody"></tbody>
+                </table>
+            </div>
+
+            <p class="report-note">
+                Reports are generated from data currently saved in this browser.
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

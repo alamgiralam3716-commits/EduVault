@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fees - EduVault</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+            
+            </div>
+
+            <div>
+                <h2>Edu<span>Vault</span></h2>
+                
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a href="dashboard.html">🏠 Dashboard</a>
+
+            <a href="students.html">👨‍🎓 Students</a>
+
+            <a href="attendance.html">📅 Attendance</a>
+
+            <a href="performance.html">📊 Performance</a>
+
+            <a href="fees.html" class="active">💰 Fees</a>
+
+            <a href="routine.html">🕐 Class Routine</a>
+
+            <a href="reports.html">📄 Reports</a>
+
+            <a href="settings.html">⚙️ Settings</a>
+
+        </nav>
+
+
+        <button onclick="logout()" class="logout">
+            ↪ Logout
+        </button>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content fees-page">
+
+
+        <!-- TOP BAR -->
+
+        <div class="top-bar">
+
+            <div>
+
+                <h1>Fee Management</h1>
+
+                <p>
+                    Manage student fee payments and pending fees
+                </p>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="saveFee()">
+
+                💾 Save Payment
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= FEE FORM ================= -->
+
+        <div class="fee-form">
+
+
+            <div class="input-group">
+
+                <label>
+                    Select Student
+                </label>
+
+                <select id="feeStudent">
+
+                    <option value="">
+                        Select Student
+                    </option>
+
+                    <option>
+                        Alamgir - 101
+                    </option>
+
+                    <option>
+                        Alok Pandey - 102
+                    </option>
+
+                    <option>
+                        Aman Kumar - 103
+                    </option>
+
+                    <option>
+                        Ankit Kumar - 104
+                    </option>
+
+                    <option>
+                        Rohit Kumar - 105
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Class
+                </label>
+
+                <select id="feeClass">
+
+                    <option>10-A</option>
+                    <option>10-B</option>
+                    <option>9-A</option>
+                    <option>9-B</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Fee Type
+                </label>
+
+                <select id="feeType">
+
+                    <option>Tuition Fee</option>
+
+                    <option>Exam Fee</option>
+
+                    <option>Transport Fee</option>
+
+                    <option>Annual Fee</option>
+
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Payment Date
+                </label>
+
+                <input
+                    type="date"
+                    id="paymentDate">
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= AMOUNT SECTION ================= -->
+
+        <div class="fee-form">
+
+
+            <div class="input-group">
+
+                <label>
+                    Total Fee (₹)
+                </label>
+
+                <input
+                    type="number"
+                    id="totalFee"
+                    placeholder="Enter total fee"
+                    oninput="calculateFee()">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Paid Amount (₹)
+                </label>
+
+                <input
+                    type="number"
+                    id="paidFee"
+                    placeholder="Enter paid amount"
+                    oninput="calculateFee()">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Pending Amount (₹)
+                </label>
+
+                <input
+                    type="number"
+                    id="pendingFee"
+                    value="0"
+                    readonly>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    Payment Status
+                </label>
+
+                <select id="paymentStatus">
+
+                    <option value="Paid">
+                        Paid
+                    </option>
+
+                    <option value="Partial">
+                        Partially Paid
+                    </option>
+
+                    <option value="Pending">
+                        Pending
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= FEE SUMMARY ================= -->
+
+        <div class="fee-summary">
+
+
+            <div class="fee-card">
+
+                <span>
+                    Total Fee
+                </span>
+
+                <strong id="totalFeeDisplay">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="fee-card paid">
+
+                <span>
+                    Paid
+                </span>
+
+                <strong id="paidFeeDisplay">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="fee-card pending">
+
+                <span>
+                    Pending
+                </span>
+
+                <strong id="pendingFeeDisplay">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="fee-card status">
+
+                <span>
+                    Status
+                </span>
+
+                <strong id="feeStatusDisplay">
+                    -
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= FEE RECORDS ================= -->
+
+        <div class="table-container">
+
+            <h2 class="section-title">
+                Recent Fee Records
+            </h2>
+
+
+            <table id="feeTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Student
+                        </th>
+
+                        <th>
+                            Class
+                        </th>
+
+                        <th>
+                            Fee Type
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Paid
+                        </th>
+
+                        <th>
+                            Pending
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Alamgir
+                        </td>
+
+                        <td>
+                            10-A
+                        </td>
+
+                        <td>
+                            Tuition Fee
+                        </td>
+
+                        <td>
+                            ₹30,000
+                        </td>
+
+                        <td>
+                            ₹30,000
+                        </td>
+
+                        <td>
+                            ₹0
+                        </td>
+
+                        <td>
+                            <span class="fee-status paid-status">
+                                Paid
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Ankit Kumar
+                        </td>
+
+                        <td>
+                            10-A
+                        </td>
+
+                        <td>
+                            Tuition Fee
+                        </td>
+
+                        <td>
+                            ₹30,000
+                        </td>
+
+                        <td>
+                            ₹20,000
+                        </td>
+
+                        <td>
+                            ₹10,000
+                        </td>
+
+                        <td>
+                            <span class="fee-status partial-status">
+                                Partial
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Aman Kumar
+                        </td>
+
+                        <td>
+                            10-B
+                        </td>
+
+                        <td>
+                            Tuition Fee
+                        </td>
+
+                        <td>
+                            ₹30,000
+                        </td>
+
+                        <td>
+                            ₹15,000
+                        </td>
+
+                        <td>
+                            ₹15,000
+                        </td>
+
+                        <td>
+                            <span class="fee-status pending-status">
+                                Pending
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

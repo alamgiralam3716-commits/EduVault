@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVault - Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SIDEBAR: Keep the same structure as dashboard.html -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Edu<span>Vault</span></h2>
+            
+        </div>
+
+        <nav>
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="students.html">👨‍🎓 Student Records</a>
+            <a href="attendance.html">📅 Attendance</a>
+            <a href="performance.html">📊 Performance</a>
+            <a href="fees.html">💰 Fees</a>
+            <a href="routine.html">🕐 Class Routine</a>
+            <a href="reports.html">📄 Reports</a>
+            <a href="settings.html" class="active">⚙️ Settings</a>
+        </nav>
+
+        <button onclick="logout()" class="logout">
+            ↪ Logout
+        </button>
+
+    </aside>
+
+    <main class="main-content settings-page">
+
+        <header class="settings-header">
+            <h1>Settings</h1>
+            <p>Manage school information and preferences.</p>
+        </header>
+
+        <form id="settingsForm">
+
+            <!-- SCHOOL INFORMATION -->
+            <section class="settings-card">
+                <h2>🏫 School Information</h2>
+
+                <div class="settings-grid">
+                    <div class="settings-field">
+                        <label for="schoolName">School Name</label>
+                        <input id="schoolName" type="text"
+                               placeholder="Enter school name" required>
+                    </div>
+
+                    <div class="settings-field">
+                        <label for="schoolEmail">School Email</label>
+                        <input id="schoolEmail" type="email"
+                               placeholder="school@example.com">
+                    </div>
+
+                    <div class="settings-field">
+                        <label for="schoolPhone">Contact Number</label>
+                        <input id="schoolPhone" type="tel"
+                               placeholder="School contact number">
+                    </div>
+
+                    <div class="settings-field">
+                        <label for="academicYear">Academic Year</label>
+                        <select id="academicYear">
+                            <option value="2026-2027">2026–2027</option>
+                            <option value="2027-2028">2027–2028</option>
+                            <option value="2028-2029">2028–2029</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-field full-width">
+                        <label for="schoolAddress">School Address</label>
+                        <textarea id="schoolAddress" rows="3"
+                                  placeholder="Enter school address"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACADEMIC SETTINGS -->
+            <section class="settings-card">
+                <h2>📚 Academic Settings</h2>
+
+                <div class="settings-grid">
+                    <div class="settings-field">
+                        <label for="passingPercentage">
+                            Passing Percentage
+                        </label>
+                        <input id="passingPercentage" type="number"
+                               min="1" max="100" value="33" required>
+                    </div>
+
+                    <div class="settings-field">
+                        <label for="gradingSystem">Grading System</label>
+                        <select id="gradingSystem">
+                            <option value="percentage">Percentage & Grades</option>
+                            <option value="marks">Marks Only</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DISPLAY SETTINGS -->
+            <section class="settings-card">
+                <h2>🖥️ Display Preferences</h2>
+
+                <div class="settings-field">
+                    <label for="themePreference">Theme</label>
+                    <select id="themePreference">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark (coming soon)</option>
+                    </select>
+                    <small>Dark theme selection is saved, but dark styling is not implemented yet.</small>
+                </div>
+            </section>
+
+            <div class="settings-actions">
+                <button type="submit" class="settings-save-btn">
+                    Save Settings
+                </button>
+
+                <button type="button" class="settings-reset-btn"
+                        onclick="resetSettings()">
+                    Reset Form
+                </button>
+            </div>
+
+            <p id="settingsMessage" role="status"></p>
+
+        </form>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
